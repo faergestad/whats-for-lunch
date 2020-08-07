@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -16,9 +14,9 @@ public class LunchService {
     private final PdfReaderService pdfReaderService;
     private final CafeteriaRepository cafeteriaRepository;
 
-    public Optional<Lunch> getTodaysLunch() {
+    public Lunch getTodaysLunch() {
         String menuUrl = cafeteriaRepository.fetchMenuLink();
         cafeteriaRepository.retrievePdfMenu(menuUrl);
-        return Optional.ofNullable(pdfReaderService.getTodaysLunch());
+        return pdfReaderService.getTodaysLunch();
     }
 }

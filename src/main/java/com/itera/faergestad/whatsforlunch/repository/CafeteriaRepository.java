@@ -26,8 +26,7 @@ public class CafeteriaRepository {
 
         ResponseEntity<byte[]> response = restTemplate.exchange(menuUrl, HttpMethod.GET, entity, byte[].class, "1");
 
-        if(response.getStatusCode().equals(HttpStatus.OK))
-        {
+        if (response.getStatusCode().equals(HttpStatus.OK)) {
             byte[] scenarioBytesFile = response.getBody();
             String fileName = menuUrl.substring(menuUrl.lastIndexOf('/') + 1);
             try {
@@ -46,7 +45,7 @@ public class CafeteriaRepository {
             Document doc = Jsoup.connect(CAFETERIA_URL).get();
 
             String localizedHtml = doc.childNodes().get(1).toString().substring(doc.childNodes().get(1).toString().lastIndexOf("DAGENS MENY") - 100,
-                                                                                doc.childNodes().get(1).toString().lastIndexOf("DAGENS MENY"));
+                    doc.childNodes().get(1).toString().lastIndexOf("DAGENS MENY"));
             // TODO legg til sjekk her for om localizedHtml inneholder http:// og .pdf
             log.info("Localized url: {}", localizedHtml);
             trimmedUrl = localizedHtml.substring(localizedHtml.lastIndexOf("http"), localizedHtml.lastIndexOf(".pdf") + 4);
