@@ -67,8 +67,8 @@ public class PdfReaderService {
         Lunch lunch = new Lunch();
         List<Dish> dishes = Lists.newArrayList();
         for (String part : parsedTextParts) {
-            if (part.charAt(0) == '-') {
-                Dish dish = new Dish(part.substring(1, part.length() - 1));
+            if (!part.toUpperCase().equals(part)) {
+                Dish dish = new Dish(part.substring(0, part.length() - 1));
                 dishes.add(dish);
             }
         }
