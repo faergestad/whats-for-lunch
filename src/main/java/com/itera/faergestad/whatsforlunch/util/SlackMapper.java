@@ -32,7 +32,7 @@ public class SlackMapper {
     private static Block createGreeting() {
         HeaderText greetingTxt = new HeaderText();
         greetingTxt.setType(PLAIN_TXT);
-        greetingTxt.setText("Her er dagens lunsj :point_down:");
+        greetingTxt.setText("Her er dagens lunsj :point_down::skin-tone-3:");
 
         Block greeting = new Block();
         greeting.setType(HEADER);
